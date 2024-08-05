@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prescription Analysis</title>
+</head>
+<body>
+    <h1>Prescription Analysis for <%= username %></h1>
+    <form action="/analyze_prescription/<%= username %>" method="POST" enctype="multipart/form-data">
+        <label for="prev_prescription">Previous Prescription (PDF):</label>
+        <input type="file" name="prev_prescription" required><br>
+        <label for="latest_prescription">Latest Prescription (PDF):</label>
+        <input type="file" name="latest_prescription" required><br>
+        <button type="submit">Analyze</button>
+    </form>
+
+    <h2>Continued Medications</h2>
+    <ul>
+        <% continuedMedications.forEach(medication => { %>
+            <li><%= medication %></li>
+        <% }); %>
+    </ul>
+
+    <h2>New Medications</h2>
+    <ul>
+        <% newMedications.forEach(medication => { %>
+            <li><%= medication %></li>
+        <% }); %>
+    </ul>
+
+    <h2>Restricted Medications</h2>
+    <ul>
+        <% restrictedMedications.forEach(medication => { %>
+            <li><%= medication %></li>
+        <% }); %>
+    </ul>
+</body>
+</html>
